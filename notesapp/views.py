@@ -38,9 +38,8 @@ def delete_note(request):
 def create_note(request):
     if request.method == 'POST':
         form = NoteCreateForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/notesapp/usernotes/')
+        form.save()
+        return redirect('/notesapp/usernotes/')
     else:
         user = request.user
         form = NoteCreateForm(initial={"author": user})
