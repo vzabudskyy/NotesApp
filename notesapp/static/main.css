@@ -1,0 +1,113 @@
+.header {
+  overflow: hidden;
+  background-color: #FFDA00;
+  box-shadow: 0px 6px 12px #68665E;
+  padding: 20px 10px;
+  font-family: "Nixie One";
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 99%;
+}
+
+body {
+    /*background: #9B882A;*/
+    background: #F9F9F9;
+    margin: 0px;
+}
+
+.note {
+    margin: 20px;
+    padding: 20px;
+    /*background: #EB5F9E;*/
+    font-family: "Segoe Print";
+    box-shadow: 0px 4px 8px #545351;
+    font-weight: bold;
+    color: #21201E;
+}
+
+/* Style the header links */
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 25px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-size: 65px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0px 4px 7px #685F31;
+  pointer-events: none;
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+  color: white;
+  text-shadow: 0px 4px 7px #685F31;
+}
+
+/* Style the active/current link*/
+.header a.active {
+  background-color: #C4A716;
+  color: white;
+}
+
+/* Float the link section to the right */
+.header-right {
+  margin-left: 20px;
+  margin-right: 20px;
+  float: right;
+}
+
+.main {
+  margin-top: 110px;
+}
+
+.buttonalignment {
+    float: right;
+    margin-top: -20px;
+    margin-right: -20px;
+    background-color: inherit;
+    padding: 0px;
+}
+
+.actionbutton {
+    background-color: inherit;
+    padding-top: 5px;
+    border-radius: 0% 0% 25% 25%;
+    border-top-color: transparent;
+    border-right-color: rgba(0,0,0, 0.25);
+    border-left-color: rgba(0,0,0, 0.25);
+    border-bottom-color: rgba(0,0,0, 0.25);
+    padding-top: 0px;
+}
+
+.actionbutton:hover {
+    filter: brightness(85%);
+}
+
+.updatebutton {
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 50%;
+}
+
+.deletebutton {
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 50%;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+
+form {
+    display: inline;
+}

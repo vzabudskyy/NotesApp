@@ -1,0 +1,126 @@
+.header {
+  overflow: hidden;
+  background-color: #FFDA00;
+  box-shadow: 0px 6px 12px #68665E;
+  padding: 20px 10px;
+  font-family: "Nixie One";
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 99%;
+}
+
+body {
+    /*background: #9B882A;*/
+    background: #F9F9F9;
+    margin: 0px;
+}
+
+/* Style the header links */
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 25px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-size: 65px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0px 4px 7px #685F31;
+  pointer-events: none;
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+  color: white;
+  text-shadow: 0px 4px 7px #685F31;
+}
+
+/* Style the active/current link*/
+.header a.active {
+  background-color: #C4A716;
+  color: white;
+}
+
+/* Float the link section to the right */
+.header-right {
+  margin-left: 20px;
+  margin-right: 20px;
+  float: right;
+}
+
+.main {
+  margin-top: 110px;
+}
+
+.updateform {
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px #545351;
+    font-family: Corbel;
+    font-weight: bold;
+}
+
+input[type=text],[type=datetime-local], select {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #F9F9F9;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: inherit;
+}
+
+textarea {
+  border: 1px solid #F9F9F9;
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none;
+  background-color: inherit;
+}
+
+input[type=submit],.upload_button {
+  border: 1px solid #F9F9F9;
+  width: 100%;
+  display: block;
+  padding: 10px 0px;
+  margin: 8px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: inherit;
+  text-align: center;
+}
+
+input[type=submit]:hover {
+  color: white;
+  filter: brightness(95%);
+}
+
+.upload_button:hover {
+  color: white;
+  filter: brightness(95%);
+}
+
+label{
+    display: block;
+}
+
+legend {
+    font-size: 20px;
+    padding-bottom: 15px;
+}

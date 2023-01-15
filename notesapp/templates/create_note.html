@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'update_note.css' %}">
+    <script src="{% static 'js/rbg.js' %}"></script>
+    <script src="{% static 'js/get_text_from_image.js' %}"></script>
+</head>
+<body onLoad="pickColor()">
+    <div class="header">
+      <a href="#default" class="logo">Notes</a>
+      <div class="header-right">
+          {% block create_note %}
+            <a class="active" href="{% url 'create_note' %}">Create note</a>
+          {% endblock %}
+          {% block user_notes %}
+            <a href="{% url 'user_notes' %}">My notes</a>
+          {% endblock %}
+          {% block group_notes %}
+            <a href="{% url 'group_notes' %}">Group notes</a>
+          {% endblock %}
+        <a href="{% url 'logout' %}">Log out</a>
+      </div>
+    </div>
+    <div class="main">
+    <form class="updateform" id="id_create_form" action="" method="post">
+        {% csrf_token %}
+        {{ form.title.errors }}
+        {{ form.title.label }}
+        {{ form.title }}
+        {{ form.group.errors}}
+        {{ form.group.label }}
+        {{ form.group }}
+        {{ form.category.errors }}
+        {{ form.category.label}}
+        {{ form.category }}
+        {{ form.text.errors }}
+        {{ form.text.label }}
+        {{ form.text }}
+        {{ form.image_with_text.errors }}
+                <label class="upload_button" for="id_image_with_text">Import text from image</label>
+                <input type="file" onchange="gettextfromimage('id_create_form');" formaction="{% url 'get_text_from_image' %}" accept="image/*" name="image_with_text" id="id_image_with_text" hidden/>
+        {{ form.reminder.errors }}
+        {{ form.reminder.label}}
+        {{ form.reminder }}
+        <input type="submit" value="Create note">
+    </form>
+    </div>
+</body>
+</html>

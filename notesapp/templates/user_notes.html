@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block user_notes %}
+    <a class="active" href="{% url 'user_notes' %}">My notes</a>
+    <script>
+      function play(id) {
+        new Audio("http://127.0.0.1:8000/notesapp/getaudio/" + "?sound_note=" + id).play();
+      }
+    </script>
+{% endblock %}
+{% block note %}
+    {% for item in notes %}
+        <div class="note">
+            <div class="buttonalignment">
+                <button class="actionbutton" value="{{ item.id }}" onclick="play(this.value);">
+                    <span class="deletebutton">&#x1F508;</span>
+                </button>
+                <form name="action_form" action="{% url 'update_note' %}" method='get'>
+                    {% csrf_token %}
+                    <button class="actionbutton" name="update" value="{{ item.id }}" type="submit">
+                        <span class="updatebutton">&#x270E;</span>
+                    </button>
+                    <button class="actionbutton" formmethod="post" formaction="{% url 'delete_note' %}" name="delete" value="{{ item.id }}" type="submit">
+                        <span class="deletebutton">&#x2715;</span>
+                    </button>
+                </form>
+            </div>
+            Title: {{ item.title }}<br>
+            Category: {{ item.category }}<br>
+            Reminder: {{ item.reminder }}<br><br>
+            {{ item.text }}
+        </div>
+    {% endfor %}
+{% endblock %}

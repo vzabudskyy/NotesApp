@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes App</title>
+    {% block js_css %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <script src="{% static 'js/randomcolor.js' %}"></script>
+    {% endblock %}
+</head>
+<body onLoad="pickColor()">
+
+    <div class="header">
+      <a href="#default" class="logo">Notes</a>
+      <div class="header-right">
+          <a href="{% url 'create_note' %}">Create note</a>
+          {% block user_notes %}
+            <a href="{% url 'user_notes' %}">My notes</a>
+          {% endblock %}
+          {% block group_notes %}
+            <a href="{% url 'group_notes' %}">Group notes</a>
+          {% endblock %}
+        <a href="{% url 'logout' %}">Log out</a>
+      </div>
+    </div>
+    <div class="main">
+        {% block note %}
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block group_notes %}
+    <a class="active">Group notes</a>
+{% endblock %}
+{% block note %}
+    {% for item in notes %}
+        <div class="note">
+            Title: {{ item.title }}<br>
+            Author: {{ item.author }}<br>
+            Group: {{ item.group }}<br>
+            Category: {{ item.category }}<br>
+            Reminder: {{ item.reminder }}<br><br>
+            {{ item.text }}
+        </div>
+    {% endfor %}
+{% endblock %}

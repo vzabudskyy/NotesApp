@@ -1,0 +1,97 @@
+body {
+  background-color: #FFDA00;
+}
+
+.login {
+    font-family: "Nixie One";
+    font-size: 80px;
+    text-shadow: 0px 6px 7px #685F31;
+    font-weight: bold;
+    color: white;
+    padding-bottom: 20px;
+    margin: 0px;
+    text-align: center;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.inputform {
+    font-family: Corbel;
+    font-weight: bold;
+    box-shadow: 0px 6px 12px #685F31;
+    background-color: white;
+    border-radius: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+input[type=text],[type=email],[type=datetime-local], select {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+input[type=submit] {
+  width: 100%;
+  display: block;
+  /*background-color: #FFDA00;*/
+  background-color: #b30000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input[type=submit]:hover {
+  color: white;
+  /*background-color: #E8C30A;*/
+  filter: brightness(85%);
+}
+
+label{
+    display: block;
+}
+
+legend {
+    font-size: 20px;
+    padding-bottom: 15px;
+}
