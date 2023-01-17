@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, Http404, HttpResponse
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from notesapp.models import Notes
 from notesapp.forms import NoteUpdateForm, NoteCreateForm
 from django.contrib.auth.decorators import login_required
@@ -10,6 +12,35 @@ from pathlib import Path
 
 # Create your views here.
 
+class NoteView(LoginRequiredMixin, TemplateView):
+    template_name = 'update_note_form.html'
+
+    def get_context_data(self, **kwargs):
+        note_id = kwargs.get('id')
+        note = Notes.objects.get(id=note_id)
+        form = NoteUpdateForm(instance=note)
+        return {'note': Notes.objects.filter(id=note_id), 'form': form}
+
+    def delete(self, request, *args, **kwargs):
+        note_id = kwargs.get('id')
+        Notes.objects.get(id=note_id).delete()
+        return redirect('user_note')
+
+    def patch(self, request, *args, **kwargs):
+        note_id = kwargs.get('id')
+        form = NoteUpdateForm(request.query_params)
+        if not form.is_valid():
+            # Тут взагалі треба видавати повідомлення про помилку.
+            # Можна використати сигнали https://docs.djangoproject.com/en/4.1/topics/signals/
+            return redirect('user_note')
+
+        note = Notes.objects.get(id=note_id)
+        note.title = form.cleaned_data['title']
+        note.category = form.cleaned_data['category']
+        note.text = form.cleaned_data['text']
+        note.reminder = form.cleaned_data['reminder']
+        note.save()
+        return redirect('user_note')
 
 @login_required
 def user_notes(request):
