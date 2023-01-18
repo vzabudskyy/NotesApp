@@ -6,6 +6,7 @@
     <title>Notes App</title>
     {% block js_css %}
     <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="{% static 'js/randomcolor.js' %}"></script>
     {% endblock %}
 </head>
@@ -14,6 +15,10 @@
     <div class="header">
       <a href="#default" class="logo">Notes</a>
       <div class="header-right">
+          <form class="searchform">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit"><i class="fa fa-search" style="font-size:16px"></i></button>
+          </form>
           <a href="{% url 'create_note' %}">Create note</a>
           {% block user_notes %}
             <a href="{% url 'user_notes' %}">My notes</a>

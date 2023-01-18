@@ -14,16 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from notesapp.views import user_notes, group_notes, update_note, delete_note, create_note, get_audio_from_text, \
-     get_text_from_image
 from django.urls import include, path
+from notesapp.views import (user_notes, group_notes,
+                            create_note, get_audio_from_text,
+                            get_text_from_image, NoteView)
 
 
 urlpatterns = [
+    path('notesapp/usernote/<int:id>/', NoteView.as_view(), name="user_note"),
     path('notesapp/usernotes/', user_notes, name="user_notes"),
     path('notesapp/groupnotes/', group_notes, name="group_notes"),
-    path('notesapp/update_note/', update_note, name="update_note"),
-    path('notesapp/delete_note/', delete_note, name="delete_note"),
     path('notesapp/createnote/', create_note, name="create_note"),
     path('notesapp/getaudio/', get_audio_from_text, name="get_audio"),
     path('notesapp/gettextfromimage/', get_text_from_image, name="get_text_from_image"),
