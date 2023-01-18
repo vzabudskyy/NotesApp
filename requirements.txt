@@ -4,3 +4,4 @@ ipython==8.7.0
 opencv-python==4.7.0.68
 pytesseract==0.3.10
 pyttsx3==2.90
+
