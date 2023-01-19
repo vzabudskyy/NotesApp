@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import include, path
 from notesapp.views import (user_notes, group_notes,
                             create_note, get_audio_from_text,
-                            get_text_from_image, NoteView)
+                            get_text_from_image, NoteView,
+                            search)
 
 
 urlpatterns = [
@@ -27,6 +28,7 @@ urlpatterns = [
     path('notesapp/createnote/', create_note, name="create_note"),
     path('notesapp/getaudio/', get_audio_from_text, name="get_audio"),
     path('notesapp/gettextfromimage/', get_text_from_image, name="get_text_from_image"),
+    path('notesapp/search/', search, name="search"),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

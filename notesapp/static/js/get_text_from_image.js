@@ -5,5 +5,12 @@ function gettextfromimage(form_id){
     var http = new XMLHttpRequest();
     http.open("POST", "http://127.0.0.1:8000/notesapp/gettextfromimage/", false);
     http.send(FD);
-    document.getElementById('id_text').value = http.responseText;
+    if (http.status == 200)
+    {
+        document.getElementById('id_text').value = http.responseText;
+    }
+    else
+    {
+        alert("Ooops, something went wrong... (Status: ${http.status})");
+    }
 };

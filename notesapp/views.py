@@ -7,6 +7,8 @@ from notesapp.text_to_speech import TxtToAudioConverter
 from notesapp.image_to_text import ImgToTxtConverter
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
+from django.core import serializers
 
 
 # Create your views here.
@@ -91,3 +93,18 @@ def get_text_from_image(request):
         tesseract_path = r'C:\Users\Vladislav\AppData\Local\Tesseract-OCR\tesseract.exe'
         note_text = ImgToTxtConverter(tesseract_path).run(image_with_text.read())
         return HttpResponse(content=note_text, content_type="text")
+
+
+@api_view(['GET'])
+@login_required
+def search(request):
+    if request.method == "GET":
+        key_phrase = request.GET['search']
+        user_id = request.user.id
+        result = Notes.objects.filter((Q(title__contains=f'{key_phrase}') |
+                                      Q(reminder__contains=f'{key_phrase}') |
+                                      Q(text__contains=f'{key_phrase}')) &
+                                      Q(author=f'{user_id}'))
+        people = serializers.serialize("json", result)
+        return HttpResponse(content=people, content_type="application/json")
+    return Http404()
